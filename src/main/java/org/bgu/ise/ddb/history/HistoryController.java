@@ -58,15 +58,14 @@ public class HistoryController extends ParentController{
 		try {
 			if (/*first insert to title*/) {
 				Date date = new Date();
+			    long timeMilli = date.getTime();
 
-				var date = date.getTimer;
-				
-				Document doc = new Document("username", username);
-	            doc.append("password", password);
-	            doc.append("firstName", firstName);
-	            doc.append("lastName", lastName);
-	            doc.append("addTime", date);
-				usr.insertOne(doc);
+				Document doc = new Document("_id", title);
+	            doc.append("username", username);
+	            doc.append("timestamp", timeMilli);
+	            
+	            Document query = new Document("_id", title);
+				titleH.updateOne(query, doc);
 				status = HttpStatus.OK;
 			} 
 			else {
